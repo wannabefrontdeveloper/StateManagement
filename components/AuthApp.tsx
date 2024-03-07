@@ -1,7 +1,8 @@
 import React from 'react';
 import {SafeAreaView, View, Text, Button, StyleSheet} from 'react-native';
-import {UseSelector, useSelector} from 'react-redux';
-import {RootState} from '@reduxjs/toolkit/query';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../slices';
+import {authorize, logout} from '../slices/auth';
 
 function AuthStatus() {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -16,10 +17,24 @@ function AuthStatus() {
 }
 
 function AuthButtons() {
+  const dispatch = useDispatch();
+  const onPressLogin = () => {
+    dispatch(
+      authorize({
+        id: 1,
+        username: 'johndoe',
+        displayName: 'John Doe',
+      }),
+    );
+  };
+  const onPressLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <View>
-      <Button title="로그인" onPress={() => {}} />
-      <Button title="로그아웃" onPress={() => {}} />
+      <Button title="로그인" onPress={onPressLogin} />
+      <Button title="로그아웃" onPress={onPressLogout} />
     </View>
   );
 }
