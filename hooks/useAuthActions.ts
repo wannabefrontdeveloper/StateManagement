@@ -1,10 +1,8 @@
+import {bindActionCreators} from 'redux';
 import {useDispatch} from 'react-redux';
-import {authorize, logout, User} from '../slices/auth';
+import {authorize, logout} from '../slices/auth';
 
 export default function useAuthActions() {
   const dispatch = useDispatch();
-  return {
-    authorize: (user: User) => dispatch(authorize(user)),
-    logout: () => dispatch(logout()),
-  };
+  return bindActionCreators({authorize, logout}, dispatch);
 }
