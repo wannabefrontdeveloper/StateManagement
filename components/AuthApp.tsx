@@ -1,10 +1,16 @@
 import React from 'react';
 import {SafeAreaView, View, Text, Button, StyleSheet} from 'react-native';
+import {UseSelector, useSelector} from 'react-redux';
+import {RootState} from '@reduxjs/toolkit/query';
 
 function AuthStatus() {
+  const user = useSelector((state: RootState) => state.auth.user);
+
   return (
     <View style={styles.status}>
-      <Text style={styles.text}>AuthStatus</Text>
+      <Text style={styles.text}>
+        {user ? user.displayName : '로그인하세요'}
+      </Text>
     </View>
   );
 }
