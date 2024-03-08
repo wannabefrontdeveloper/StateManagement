@@ -1,11 +1,11 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
-import TodoApp from './components/TodoApp';
+import PostsApp from './components/PostsApp';
 
 function App() {
   return (
     <RecoilRoot>
-      <TodoApp />
+      <PostsApp />
     </RecoilRoot>
   );
 }
