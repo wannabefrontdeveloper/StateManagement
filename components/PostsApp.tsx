@@ -1,9 +1,17 @@
 import React from 'react';
-import { ActivityIndicator, Button, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Button,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import usePosts from '../hooks/usePosts';
 
 function PostsApp() {
-  const { data, loading, refetch } = usePosts({ enabled: true });
+  const {data, loading, refetch} = usePosts();
 
   return (
     <SafeAreaView style={styles.block}>
@@ -11,7 +19,7 @@ function PostsApp() {
         <FlatList
           style={styles.list}
           data={data}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <View style={styles.item}>
               <Text>{item.title}</Text>
             </View>
@@ -21,7 +29,7 @@ function PostsApp() {
           ListFooterComponent={() => <View style={styles.separator} />}
         />
       ) : (
-        <ActivityIndicator size="large" color="black" style={styles.loading} /> // loading 스타일을 추가해야 합니다.
+        <ActivityIndicator size="large" color="black" style={styles.loading} />
       )}
       <Button title="새로고침" onPress={refetch} disabled={loading} />
     </SafeAreaView>
@@ -31,9 +39,9 @@ function PostsApp() {
 const styles = StyleSheet.create({
   block: { flex: 1 },
   list: { flex: 1 },
+  loading: { flex: 1 },
   item: { padding: 8 },
-  separator: { height: 1, backgroundColor: 'black' },
-  loading: { flex: 1, justifyContent: 'center', alignItems: 'center' } // loading 스타일을 정의합니다.
+  separator: { height: 1, backgroundColor: 'black' }, // loading 스타일을 정의합니다.
 });
 
 export default PostsApp;
