@@ -15,10 +15,10 @@ import useTodosActions from '../hooks/useTodosActions';
 function BlackButton({onPress, title}: {onPress(): void; title: string}) {
   return (
     <Pressable
-    style={StyleSheet.button}
+    style={styles.button}
     onPress={onPress}
     android_ripple={{color:'white'}}>
-      <Text style={StyleSheet.buttonText}>{title}</Text>
+      <Text style={styles.buttonText}>{title}</Text>
     </Pressable>
   );
 }
