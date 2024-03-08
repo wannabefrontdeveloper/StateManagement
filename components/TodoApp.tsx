@@ -41,10 +41,7 @@ function TodoItem({id, text, done}: {id: number; text: string; done: boolean}) {
 
 // FlatList로 여러 TodoItem 컴포넌트를 보여줍니다.
 function Todos() {
-  const todos = [
-    {id: 1, text: '리액트 네이티브 배우기', done: true},
-    {id: 2, text: '상태 관리 배우기' , done: false},
-  ];
+  const todos = useTodos();
 
   return (
     <FlatList
