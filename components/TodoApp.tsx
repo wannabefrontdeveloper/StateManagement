@@ -64,9 +64,10 @@ function Todos() {
 // 할일 항목을 등록하는 컴포넌트입니다.
 function TodoInput() {
   const [text, setText] = useState('');
+  const {add} = useTodosActions();
 
   const onPress = () => {
-    console.log('등록');
+    add(text);
     setText('');
   };
 
