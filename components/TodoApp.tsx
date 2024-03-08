@@ -25,8 +25,12 @@ function BlackButton({onPress, title}: {onPress(): void; title: string}) {
 
 // 할일 항목의 정보를 보여줍니다.
 function TodoItem({id, text, done}: {id: number; text: string; done: boolean}) {
+  const {toggle, remove} = useTodosActions();
   const onToggle = () => {
-    console.log(`토글 ${id}`);
+    toggle(id);
+  };
+  const onRemove = () => {
+    remove(id);
   };
 
   return (
